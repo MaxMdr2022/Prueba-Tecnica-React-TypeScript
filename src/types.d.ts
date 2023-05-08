@@ -1,3 +1,26 @@
+/* El metodo .toSorted() no tiene tipado por TS aun. Entonces declaramos un metodo global para el tipadodel metodo: */
+declare global {
+
+  /* Es crear una interface donde le pasamos una clave : valor. Donde la clave es el toSorted() : y el valor es el nuevo arreglo
+    que devuelve la funcion.
+
+    Al toSorted() le decimos que tenemos una funcion de comparacion, que recibe dos parametros, el tipo del parametro (T) se
+    lo indicamos nosotros (user lo infiere de users) y va a retornar un numero (1 o -1). Y eso devuelve un arreglo T[]
+  */
+
+  interface Array <T> {
+    toSorted(compareFn?: (a: T, b: T) => number): T[]
+  }
+}
+/* Creamos un enum para ordenar al cliclear en las columnas */
+export enum OrdenarPor {
+  NONE = 'none',
+  NAME = 'name',
+  LAST = 'last',
+  COUNTRY = 'country'
+}
+
+/* -------------Tipado API------------------ */
 export interface APIUsers {
   results: User[]
   info: Info
